@@ -7,25 +7,33 @@
           v-model="form.firstName"
           class="form__input"
           type="text"
-          placeholder="First name">
+          placeholder="First name"
+        >
       </div>
       <div class="form__fieldset">
         <input
           v-model="form.lastName"
           class="form__input"
           type="text"
-          placeholder="Last name">
+          placeholder="Last name"
+        >
       </div>
       <div class="form__fieldset">
         <input
           v-model="form.phoneNumber"
           class="form__input"
           type="tel"
-          placeholder="Phone number">
+          placeholder="Phone number"
+        >
       </div>
       <button
         class="form__button"
-        type="submit">Send</button>
+        type="submit">
+        Send
+      </button>
+      <div v-if="requestSuccess">
+        {{ responseMessage }}
+      </div>
     </form>
   </div>
 </template>
@@ -39,17 +47,25 @@ export default {
         firstName: '',
         lastName: '',
         phoneNumber: ''
-      }
+      },
+      responseMessage: '',
+      requestSuccess: false
     }
   },
   methods: {
     formSubmit() {
-      console.log('submit method');
-      this.$axios.post('/', {
+      this.$axios.post('http://localhost:3000/', {
         data: this.form
       })
       .then((response) => {
-        console.log(response);
+        const message = response.data.title;
+
+        if (message) {
+          this.requestSuccess = true;
+          this.responseMessage = message;
+        } else {
+          this.responseMessage = 'Error';
+        }
       })
       .catch((error) => {
         console.log(error);
