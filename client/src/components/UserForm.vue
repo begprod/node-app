@@ -1,17 +1,31 @@
 <template>
   <div>
     <h1>User form</h1>
-    <form class="form">
+    <form class="form" @submit.prevent="formSubmit">
       <div class="form__fieldset">
-        <input class="form__input" type="text" placeholder="First name">
+        <input
+          v-model="form.firstName"
+          class="form__input"
+          type="text"
+          placeholder="First name">
       </div>
       <div class="form__fieldset">
-        <input class="form__input" type="text" placeholder="Last name">
+        <input
+          v-model="form.lastName"
+          class="form__input"
+          type="text"
+          placeholder="Last name">
       </div>
       <div class="form__fieldset">
-        <input class="form__input" type="tel" placeholder="Phone number">
+        <input
+          v-model="form.phoneNumber"
+          class="form__input"
+          type="tel"
+          placeholder="Phone number">
       </div>
-      <button class="form__button" type="submit">Send</button>
+      <button
+        class="form__button"
+        type="submit">Send</button>
     </form>
   </div>
 </template>
@@ -19,6 +33,29 @@
 <script>
 export default {
   name: 'UserForm',
+  data() {
+    return {
+      form: {
+        firstName: '',
+        lastName: '',
+        phoneNumber: ''
+      }
+    }
+  },
+  methods: {
+    formSubmit() {
+      console.log('submit method');
+      this.$axios.post('/', {
+        data: this.form
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
+  }
 }
 </script>
 
