@@ -4,6 +4,8 @@ const port = 3000;
 
 app.get('/', (request, response) => {
 	response.send('Hello world');
+	// response >>> user form show response
+	console.log(request);
 });
 
 app.listen(port, () => {
