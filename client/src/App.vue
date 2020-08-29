@@ -11,9 +11,12 @@
 </template>
 
 <style lang="scss">
+html {
+  font-size: 18px;
+}
+
 body {
   margin: 0;
-  font-size: 18px;
 }
 
 .page {

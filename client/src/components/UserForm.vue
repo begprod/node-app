@@ -1,6 +1,18 @@
 <template>
   <div>
     <h1>User form</h1>
+    <form class="form">
+      <div class="form__fieldset">
+        <input class="form__input" type="text" placeholder="First name">
+      </div>
+      <div class="form__fieldset">
+        <input class="form__input" type="text" placeholder="Last name">
+      </div>
+      <div class="form__fieldset">
+        <input class="form__input" type="tel" placeholder="Phone number">
+      </div>
+      <button class="form__button" type="submit">Send</button>
+    </form>
   </div>
 </template>
 
@@ -10,6 +22,25 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.form {
+  &__fieldset {
+    margin-bottom: 20px;
+  }
 
+  &__input {
+    padding: 5px;
+    font-size: 1rem;
+  }
+
+  &__button {
+    width: 100%;
+    height: 35px;
+    padding: 5px;
+    font-size: 1rem;
+    border: none;
+    color: white;
+    background-color: cadetblue;
+  }
+}
 </style>
