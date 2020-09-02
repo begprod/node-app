@@ -4,26 +4,29 @@
     <form class="form" @submit.prevent="formSubmit">
       <div class="form__fieldset">
         <input
-          v-model="form.firstName"
+          v-model="form.userFirstName"
           class="form__input"
           type="text"
           placeholder="First name"
+          name="firstName"
         >
       </div>
       <div class="form__fieldset">
         <input
-          v-model="form.lastName"
+          v-model="form.userSecondName"
           class="form__input"
           type="text"
-          placeholder="Last name"
+          placeholder="Second name"
+          name="secondName"
         >
       </div>
       <div class="form__fieldset">
         <input
-          v-model="form.phoneNumber"
+          v-model="form.userPhoneNumber"
           class="form__input"
           type="tel"
           placeholder="Phone number"
+          name="phoneNumber"
         >
       </div>
       <button
@@ -44,9 +47,9 @@ export default {
   data() {
     return {
       form: {
-        firstName: '',
-        lastName: '',
-        phoneNumber: ''
+        userFirstName: '',
+        userSecondName: '',
+        userPhoneNumber: ''
       },
       responseMessage: '',
       requestSuccess: false
@@ -54,10 +57,12 @@ export default {
   },
   methods: {
     formSubmit() {
-      this.$axios.post('http://localhost:3000/', {
+      this.$axios.post('http://localhost:3000/api/users', {
         data: this.form
       })
       .then((response) => {
+        console.log(response);
+
         const message = response.data.title;
 
         if (message) {
