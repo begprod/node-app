@@ -87,6 +87,7 @@ export default {
   }
 
   &__input {
+    width: 100%;
     padding: 5px;
     font-size: 1rem;
   }
