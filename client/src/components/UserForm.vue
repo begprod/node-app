@@ -61,7 +61,11 @@ export default {
         data: this.form
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
+
+        this.form.userFirstName = '';
+        this.form.userSecondName = '';
+        this.form.userPhoneNumber = '';
 
         const message = response.data.title;
 

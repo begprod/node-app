@@ -51,9 +51,21 @@ async function update(request, response) {
 	}
 }
 
+async function remove(request, response) {
+	const id = getIdParam(request);
+
+	await models.user.destroy({
+		where: {
+			id: id
+		}
+	});
+	response.status(200).end();
+}
+
 module.exports = {
 	getAll,
 	getById,
 	create,
-	update
+	update,
+	remove
 };

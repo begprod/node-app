@@ -2,7 +2,7 @@
   <div class="page">
     <div class="navigation">
       <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
+      <router-link to="/users">Users</router-link>
     </div>
     <div class="container">
       <router-view/>
@@ -13,6 +13,11 @@
 <style lang="scss">
 html {
   font-size: 18px;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 body {

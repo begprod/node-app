@@ -12,6 +12,7 @@
         {{ user['userPhoneNumber'] }}
       </div>
       <button class="user__button" @click="editUser(user.id)">Edit</button>
+      <button class="user__button" @click="deleteUser(user.id)">Delete</button>
     </div>
 
     <form class="form users__form" @submit.prevent v-if="isEdited">
@@ -104,6 +105,18 @@ export default {
         id: this.userId,
         data: this.userData
       })
+      .then((response) => {
+        console.log(response);
+        location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    },
+    deleteUser(id) {
+      console.log(id);
+
+      this.$axios.delete(`http://localhost:3000/api/users/${id}`)
       .then((response) => {
         console.log(response);
         location.reload();
